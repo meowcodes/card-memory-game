@@ -1,12 +1,16 @@
 var card = document.getElementsByClassName("card");
 var theCount = document.getElementById("the-count");
-
-var count = 0;
-var pickedCard = [];
-var size = 16;
+var newGame = document.getElementById("new-game-btn");
+var count;
+var pickedCard;
 var clickCount;
+var size = 16;
 
 init();
+
+newGame.addEventListener("click", function(){
+  init();
+})
 
 for(var i=0; i<card.length; i++){
   card[i].addEventListener("click", function() {
@@ -15,8 +19,8 @@ for(var i=0; i<card.length; i++){
     if(this === pickedCard[0] || this.firstElementChild.classList[1] === "card-matched"){
       console.log("same card or already matched");
     }else if(count < 2){
-      console.log(this);
       this.firstElementChild.style.display = "block";
+      this.style.backgroundColor = "lavender";
       pickedCard.push(this);
       count += 1;
       if(count === 2){
@@ -28,21 +32,32 @@ for(var i=0; i<card.length; i++){
             pickedCard[1].firstElementChild.classList.add("card-matched");
           }else {
             pickedCard[0].firstElementChild.style.display = "none";
+            pickedCard[0].style.backgroundColor = "ghostwhite";
             pickedCard[1].firstElementChild.style.display = "none";
+            pickedCard[1].style.backgroundColor = "ghostwhite";
           }
           count = 0;
           pickedCard = [];
         },1000);
       }
     }else {
-      console.log("no more!");
+      console.log("wait!");
     }
   });
 }
 
 function init() {
+  count = 0;
+  pickedCard = [];
   clickCount = 0;
+  theCount.innerText = clickCount;
   var randomList = [];
+  for(var i=0; i<card.length; i++){
+    card[i].firstElementChild.classList.remove("card-matched");
+    card[i].firstElementChild.classList.add("card-unmatched");
+    card[i].firstElementChild.style.display = "none";
+    card[i].style.backgroundColor = "ghostwhite";
+  }
   //pick random cards
   for(var j=0; j<(card.length/2); j++){
     var temp = Math.floor(Math.random()* Math.floor(size))+1;
@@ -52,16 +67,13 @@ function init() {
       randomList.push(temp);
     }
   }
-  console.log(randomList);
   var num = {};
   for(var k=0; k<card.length; k++){
     var temp = randomList[Math.floor(Math.random()* Math.floor(randomList.length))];
-    console.log(temp);
     if(num[temp] >= 2){
       k -= 1;
     }else {
       card[k].firstElementChild.src = "img/kitty" + temp + ".jpg";
-      console.log(card[k].firstElementChild.src);
       if(num[temp] === undefined){
         num[temp] = 1;
       }else {
@@ -69,5 +81,4 @@ function init() {
       }
     }
   }
-  console.log(num);
 }
