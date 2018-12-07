@@ -1,0 +1,33 @@
+body {
+  background-color: lavender;
+}
+.top-box {
+  background-color: #D0B8E0;
+}
+.play-box {
+  
+}
+.card-box {
+  max-width: 820px;
+  margin: 2em auto;
+  border: white solid 1px;
+}
+
+.card {
+  margin: 10px;
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  border: white solid 3px;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+  display: none;
+}
