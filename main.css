@@ -1,10 +1,32 @@
 body {
   background-color: lavender;
   color: ghostwhite;
+  font-family: 'Cabin', sans-serif;
 }
 .top-box {
   background-color: #D0B8E0;
 }
+.count-box {
+  border: ghostwhite solid 3px;
+  padding: 0.5em;
+  background-color: lavender;
+  color: #D0B8E0;
+  
+}
+.count-box span {
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.new-game-btn {
+  border: ghostwhite solid 3px;
+  padding: 0.5em;
+  background-color: lavender;
+  color: #D0B8E0;
+  font-weight: 700;
+  font-size: 1em;
+}
+
 .play-box {
   
 }
