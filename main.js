@@ -1,9 +1,11 @@
 var card = document.getElementsByClassName("card");
 var theCount = document.getElementById("the-count");
 var newGame = document.getElementById("new-game-btn");
+var cardBox = document.getElementById("card-box");
 var count;
 var pickedCard;
 var clickCount;
+var matchCount;
 var size = 16;
 
 init();
@@ -20,7 +22,7 @@ for(var i=0; i<card.length; i++){
       console.log("same card or already matched");
     }else if(count < 2){
       this.firstElementChild.style.display = "block";
-      this.style.backgroundColor = "lavender";
+      this.style.backgroundColor = "transparent";
       pickedCard.push(this);
       count += 1;
       if(count === 2){
@@ -30,6 +32,10 @@ for(var i=0; i<card.length; i++){
             pickedCard[0].firstElementChild.classList.add("card-matched");
             pickedCard[1].firstElementChild.classList.remove("card-unmatched");
             pickedCard[1].firstElementChild.classList.add("card-matched");
+            matchCount += 1;
+            if(matchCount === size/2){
+              cardBox.style.backgroundColor = "#D0B8E0";
+            }
           }else {
             pickedCard[0].firstElementChild.style.display = "none";
             pickedCard[0].style.backgroundColor = "ghostwhite";
@@ -50,8 +56,10 @@ function init() {
   count = 0;
   pickedCard = [];
   clickCount = 0;
+  matchCount = 0;
   theCount.innerText = clickCount;
   var randomList = [];
+  cardBox.style.backgroundColor = "transparent";
   for(var i=0; i<card.length; i++){
     card[i].firstElementChild.classList.remove("card-matched");
     card[i].firstElementChild.classList.add("card-unmatched");

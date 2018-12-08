@@ -8,10 +8,9 @@ body {
 }
 .count-box {
   border: ghostwhite solid 3px;
-  padding: 0.5em;
   background-color: lavender;
   color: #D0B8E0;
-  
+  padding: 0.5em
 }
 .count-box span {
   font-weight: 700;
